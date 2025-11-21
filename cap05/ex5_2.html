@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="tabuada.png">
+    <link rel="stylesheet" href="estilo.css">
+    <title></title>
+</head>
+<body>
+    <img src="tabuada.png" alt="Esta em seu auge" class="alta">
+    <h1>Programa Numero Decresente</h1>
+    <form>
+        <p>Numero: <input type="number" id="inN" required></p>
+        <P><input type="submit" value="Decresente até 1"></P>
+    </form>
+    <h3></h3>
+    <script>
+        const frm = document.querySelector("form");
+        const resp = document.querySelector("h3");
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const valor = Number(frm.inN.value);
+            let resposta = `entre ${valor} até 1: `
+            for (let e = valor; e > 0; e = e - 1) {
+                if (e == 1) {
+                    resposta = resposta + e + "."
+                } else {
+                    resposta = resposta + e + ", "
+                }
+            }
+            resp.innerText = resposta
+        })
+    </script>
+</body>
+</html>
