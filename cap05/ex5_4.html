@@ -1,0 +1,22 @@
+<script>
+    alert("Digite 0 para sair")
+    do {
+        const numero = Number(prompt("Numero: "))
+        resultado = numero == 0 || isNaN(numero) ? false : true // se for um numero igual a zero ou um numero invalido
+        if (resultado) { 
+            const sair = confirm("Deseja Sair")
+            if (sair) {
+                break
+            } else {
+                continue
+            }
+        } 
+        if (numero % 2 == 0) {
+            alert(`o dobro de ${numero} é ${numero * 2}`)
+        } else {
+            alert(`o triplo do ${numero} é ${numero * 3}`)
+        }
+    } while (true) 
+    alert("Bye, Bye...")
+
+</script>
