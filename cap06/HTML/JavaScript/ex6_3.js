@@ -14,3 +14,20 @@ frm.addEventListener("submit", (e) => {
     // dispara um evento de click em inListarTodos
     frm.inListarTodos.dispatchEvent(new Event("click"));
 })
+
+frm.inListar.addEventListener("click", () => {
+    if (carros.length == 0) {
+        console.log("Não há veiculos");
+        return
+    }
+    listar = carros.reduce((acumulador, aux) => 
+    acumulador + aux.nome + ` -R$: ` + aux.preço.toFixed(2) + `\n`, ``);
+    resp.innerText = `Lista dos carros Cadastrados\n${"-".repeat(40)}\n${listar}`
+})
+
+frm.inFiltrar.addEventListener("click", () => {
+    const maximo = Number(prompt("Qual o valor Maximo que o Cliente deseja Pagar? "));
+    const filtrar = carros.filter(aux => aux.preço <= maximo);
+    const listar = filtrar.reduce((acumulador, valor) => acumulador + valor.nome + " -R$ " + valor.preço.toFixed(2) + "\n", "");
+    resp.innerText = `Valores filtador apartir de ${maximo}\n${"-".repeat(40)}\n${listar}`;
+})
