@@ -17,12 +17,12 @@ frm.addEventListener("submit", (e) => {
 
 frm.inListar.addEventListener("click", () => {
     if (carros.length == 0) {
-        console.log("Não há veiculos");
-        return
+        alert("Não há veiculos");
+        return;
     }
     listar = carros.reduce((acumulador, aux) => 
     acumulador + aux.nome + ` -R$: ` + aux.preço.toFixed(2) + `\n`, ``);
-    resp.innerText = `Lista dos carros Cadastrados\n${"-".repeat(40)}\n${listar}`
+    resp.innerText = `Lista dos carros Cadastrados\n${"-".repeat(40)}\n${listar}`;
 })
 
 frm.inFiltrar.addEventListener("click", () => {
@@ -30,4 +30,18 @@ frm.inFiltrar.addEventListener("click", () => {
     const filtrar = carros.filter(aux => aux.preço <= maximo);
     const listar = filtrar.reduce((acumulador, valor) => acumulador + valor.nome + " -R$ " + valor.preço.toFixed(2) + "\n", "");
     resp.innerText = `Valores filtador apartir de ${maximo}\n${"-".repeat(40)}\n${listar}`;
+})
+
+frm.inPromoçao.addEventListener("click", () => {
+    const promoçao = Number(prompt("Qual o Valor do Desconto: "));
+    if (promoçao == 0 || isNaN(promoçao)) {
+        return;
+    }
+    const carrodesc = carros.map(aux => ({modelo: aux.nome, preço: aux.preço - (aux.preço * promoçao / 100)}));
+
+    let lista = ``;
+    for (const carro of carrodesc) {
+        lista += `${carro.modelo} - R$: ${carro.preço.toFixed(2)}\n`;
+    }
+    resp.innerText = `Carro com Desconto de ${promoçao}%\n${"-".repeat(40)}\n${lista}`;
 })
