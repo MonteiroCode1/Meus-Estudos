@@ -14,4 +14,9 @@ console.log(num.sort().join(", "));
 console.log(numeros.sort())
 
 const valores = [50, 100, 2];
-console.log(valores.sort);
+console.log(valores.sort((a, b) => a - b)) // me mostra o vetor em ordem cresente!
+console.log(valores.sort((a, b) => b - a)) // ordem decresente!
+
+//negativo → a vem antes de b
+//positivo → b vem antes de a
+//0 → tanto faz
