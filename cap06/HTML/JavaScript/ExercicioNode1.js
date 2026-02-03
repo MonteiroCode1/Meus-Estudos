@@ -11,25 +11,19 @@ do {
     }
     const nota = Number(prompt("DIgite sua Nota: "));
     alunos.push({nome, nota});
+    console.log("Ok! Aluno Cadastrado!...\n")
 } while(true)
 
-// map(), filter()
-
-const nomes_alunos = [];
-
-for (const percorrer of alunos) {
-    const {nome, nota} = percorrer; // verificar se a nota desse aluno é maior ou igual a 7
-    if (nota >= 7) {
-        nomes_alunos.push([nome, nota]);
+// reduce(), filter()
+const maior = alunos.reduce((a, b) => Math.max(a, b.nota), 0);
+console.log(`\nMaior Nota: ${maior}`);
+if (maior >= 7) {
+    const destaques = alunos.filter(aux => aux.nota >= 7);
+    let resumo = `Alunos em destaques\n${"-".repeat(40)}\n`;
+    for (const elite of destaques) {
+        resumo += `Nome: ${elite.nome}, nota: ${elite.nota}\n`;
     }
-}
-
-if (nomes_alunos.length == 0) {
-    console.log("Não há alunos em destaque na Turma");
+    console.log(resumo);
 } else {
-    let acumulador = ``;
-    for (const percorrer of nomes_alunos) {
-        
-    }
-    console.log(`Alunos em Destaques ${nomes_alunos.join(", ")}.`);
+    console.log("Sem alunos destaques na turma!");
 }
